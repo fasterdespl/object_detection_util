@@ -22,8 +22,8 @@ class CustomYOLODetector:
         self.cfg_paths = {"yolov4": "cfg/yolov4-custom.cfg",
                      "yolov4-tiny": "cfg/yolov4-tiny-custom.cfg",
                      "yolov4-csp": "cfg/yolov4-csp.cfg",
-                     "yolov4-tiny-relu-tpu" : "yolov4-tiny-relu-tpu.cfg",
-                     "yolov3-tiny-relu-tpu" : "yolov3-tiny-relu-tpu.cfg"}
+                     "yolov4-tiny-relu-tpu" : "cfg/yolov4-tiny-relu-tpu.cfg",
+                     "yolov3-tiny-relu-tpu" : "cfg/yolov3-tiny-relu-tpu.cfg"}
 
         self.subdivisions_by_model = {"yolov4": 32,
                                       "yolov4-tiny": 8,
