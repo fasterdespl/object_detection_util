@@ -2,7 +2,7 @@ import os
 import zipfile
 from pathlib import Path
 
-DRIVE_ROOT_DIR = "/content/gdrive/MyDrive/pysource_object_detection/"
+DRIVE_ROOT_DIR = "/content/gdrive/MyDrive/projects_object_detection/"
 DARKNET_PATH = "/content/darknet"
 
 def is_gpu_enabled():
@@ -62,7 +62,7 @@ def extract_dataset(project_name):
 
 
 def find_existing_weights(project_name):
-    dnn_path = "/content/gdrive/MyDrive/pysource_object_detection/{}/dnn".format(project_name)
+    dnn_path = "{}{}/dnn".format(DRIVE_ROOT_DIR,project_name)
     new_weights_path = os.path.join(dnn_path, "custom-detector_last.weights")
     # check if new weights exists
     if os.path.exists(new_weights_path):
