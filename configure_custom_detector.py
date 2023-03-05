@@ -76,7 +76,7 @@ class CustomYOLODetector:
             urllib.request.urlretrieve(
                 'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137',
                 'yolov4.conv.137')
-        # elif self.model == "yolov3-tiny-relu":
+        # elif self.model == "yolov3-tiny-relu-tpu":
         #     urllib.request.urlretrieve(
         #         'https://github.com//hamzaMahdi/darknet/raw/master/yolov3-tiny.conv.15',
         #         os.path.join(DARKNET_PATH, 'yolov3-tiny.conv.15'))    
