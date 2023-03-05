@@ -80,7 +80,7 @@ class CustomYOLODetector:
         #     urllib.request.urlretrieve(
         #         'https://github.com//hamzaMahdi/darknet/raw/master/yolov3-tiny.conv.15',
         #         os.path.join(DARKNET_PATH, 'yolov3-tiny.conv.15'))    
-        elif self.model == "yolov3-tiny-relu":
+        elif self.model == "yolov3-tiny-relu-tpu":
             urllib.request.urlretrieve(
                 'https://pjreddie.com/media/files/yolov3-tiny.weights',
                 os.path.join(DARKNET_PATH, 'yolov3-tiny.weights'))        
