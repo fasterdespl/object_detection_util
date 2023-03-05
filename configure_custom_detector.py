@@ -14,7 +14,7 @@ DARKNET_PATH = "/content/darknet"
 resume_interrupted = False
 
 
-# ./darknet partial cfg/yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.conv.15 15
+# ./darknet partial cfg/yolov3-tiny-relu-tpu.cfg yolov3-tiny.weights yolov3-tiny.conv.15 15
 
 class CustomYOLODetector:
     def __init__(self, ProjectName, Model):
@@ -22,24 +22,27 @@ class CustomYOLODetector:
         self.cfg_paths = {"yolov4": "cfg/yolov4-custom.cfg",
                      "yolov4-tiny": "cfg/yolov4-tiny-custom.cfg",
                      "yolov4-csp": "cfg/yolov4-csp.cfg",
-                     "yolov3-tiny-relu" : "yolov3-tiny-relu.cfg"}
+                     "yolov4-tiny-relu-tpu" : "yolov4-tiny-relu-tpu.cfg",
+                     "yolov3-tiny-relu-tpu" : "yolov3-tiny-relu-tpu.cfg"}
 
         self.subdivisions_by_model = {"yolov4": 32,
                                       "yolov4-tiny": 8,
                                       "yolov4-csp": 32,
-                                      "yolov3-tiny-relu": 8}
+                                      "yolov4-tiny-relu-tpu": 8,
+                                      "yolov3-tiny-relu-tpu": 8,}
         
 
         self.weights_by_model = {"yolov4": "yolov4.conv.137",
-                            "yolov4-tiny": "yolov4-tiny.conv.29",
+                            "yolov4-tiny": "yolov4-tiny.conv.29",                         
                             "yolov4-csp": "yolov4-csp.conv.142",
-                            "yolov3-tiny-relu": "yolov3-tiny-relu"}
+                            "yolov4-tiny-relu-tpu": "yolov4-tiny.conv.29",
+                            "yolov3-tiny-relu-tpu": "yolov3-tiny.conv.15"}
 
 
         self.projectname = ProjectName
         self.model = Model
 
-        self.drive_folder = r"/content/gdrive/MyDrive/pysource_object_detection"
+        self.drive_folder = r"/content/gdrive/MyDrive/projects_object_detection"
         self.custom_cfg_path = self.cfg_paths.get(self.model)
         self.new_custom_cfg_path = "cfg/{}-custom.cfg".format(self.model)
         self.dnn_path = "{}/{}/dnn".format(self.drive_folder, self.projectname)
@@ -65,7 +68,7 @@ class CustomYOLODetector:
             urllib.request.urlretrieve(
                 'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-csp.conv.142',
                 os.path.join(DARKNET_PATH, 'yolov4-csp.conv.142'))
-        elif self.model == "yolov4-tiny":
+        elif (self.model == "yolov4-tiny") or (self.model == "yolov4-tiny-relu-tpu"):
             urllib.request.urlretrieve(
                 'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.conv.29',
                 os.path.join(DARKNET_PATH, 'yolov4-tiny.conv.29'))
@@ -73,10 +76,14 @@ class CustomYOLODetector:
             urllib.request.urlretrieve(
                 'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137',
                 'yolov4.conv.137')
+        # elif self.model == "yolov3-tiny-relu":
+        #     urllib.request.urlretrieve(
+        #         'https://github.com//hamzaMahdi/darknet/raw/master/yolov3-tiny.conv.15',
+        #         os.path.join(DARKNET_PATH, 'yolov3-tiny.conv.15'))    
         elif self.model == "yolov3-tiny-relu":
             urllib.request.urlretrieve(
-                'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137',
-                'yolov4.conv.137')            
+                'https://pjreddie.com/media/files/yolov3-tiny.weights',
+                os.path.join(DARKNET_PATH, 'yolov3-tiny.weights'))        
         print("Weights downloaded")
 
     def count_classes_number(self):
