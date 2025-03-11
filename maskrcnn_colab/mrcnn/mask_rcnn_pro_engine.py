@@ -34,7 +34,7 @@ from PIL import Image, ImageDraw
 
 
 
-DRIVE_ROOT_DIR = "/content/gdrive/MyDrive/pysource_mrcnn_pro/"
+DRIVE_ROOT_DIR = "/content/gdrive/MyDrive/mrcnn/"
 
 
 
