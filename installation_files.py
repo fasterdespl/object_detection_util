@@ -24,7 +24,7 @@ def connect_google_drive(project_name):
     if not os.path.exists(model_dir):
         os.makedirs(model_dir)
         print("New project created {}".format(project_name))
-        print("You'll find the project on Google Drive, on the folder pysource_object_detection/{} .".format(project_name))
+        print("You'll find the project on Google Drive, on the folder projects_object_detection/{} .".format(project_name))
     else:
         print("Project {} already exists. Editing existing project.".format(project_name))
     return model_dir
